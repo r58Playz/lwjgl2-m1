@@ -1,0 +1,98 @@
+How to build the Eclipse update site
+------------------------------------
+Author: Jens von Pilgrim <developer@jevopi.de>
+
+Building the Eclipse update site is fully integrated into the main LWJGL build script.
+Here is how to build the update site:
+
+Run main lwjgl ant script (LWJGL/build.xml) with target "eclipse-updatesite"
+
+You will find the updatesite in
+	LWJGL/eclipse-update/org.lwjgl.build/build/plugins/org.lwjgl.updatesite
+
+Note that there are two targets: eclipse-updatesite and 
+eclipse-updatesite-simple. The first one depends from the target "release",
+defined in the main build file. However, if you are sure the relase target has 
+been called before, you may want to only create the update site without 
+building the release target again. In that case, you can all 
+eclipse-update-simple.
+
+The update site build requires some Java classes to be precompiled. These classes
+can be found in some zip archives in folder plugin-classes and anttasks.jar. 
+Building these classes requires Eclipse dependencies (in case of the 
+plugin-classes) or they define anttasks required to be present when running ant.
+In order to build these classes, open all projects found in subfolder 
+LWJGL/eclipse-update in Eclipse: this way, all Eclipse classes will get 
+automatically compiled. Then run the ant script buildEclipseClasses.xml from 
+within Eclipse. Actually, this is rarely necessary as the archives are all 
+committed to the LWJGL SVN and will be present if you check out everything. You
+only need to run that build if the Eclise plugin classes (or the anttasks) were
+changed. 
+
+The build plugin is part of the LWJGL Eclipse plugins. The following plugins are
+required:
+
+org.lwjgl
+  Skeleton plugin, that is it contains the Eclipse Activator for setting up the
+  native library path, but the lwjgl jars are missing. These jars are added by
+  the build script later on
+
+org.lwjgl.source
+  Skeleton plugin for sources, plugin.xml etc are already configured, but again
+  the sources itself are only added by the build script later on
+  
+org.lwjgl.doc
+  Skeleton plugin for documentation, Javadoc is added by build script, however
+  some Eclipse help files are already in place
+  
+org.lwjgl.info
+  This plugin was called org.lwjgl.test in the elder version. I renamed it as it
+  does not really contain a test but Eclipse views. Besides the spinning torus
+  test view, I added an info view printing out current version of driver etc.
+  and capabilities of user's OpenGL system
+  
+org.lwjgl.tools
+  This plugin contains a library set up for plain Java projects, in order to get
+  rid of defining additional parameters in the run configuration. It is
+  documented in the help files. I have sent you this plugin once, but it never
+  made it into the update site. Well, now it is in place
+  
+org.lwjgl.feature
+  Feature plugin referencing the core lwjgl plugin. It contains two
+  feature.xml definitions, one used for playing around in Eclipse, and a
+  template which is used by the build script. If you ever change something
+  here, pay attention to also change the template file.
+  
+org.lwjgl.feature.sdk
+  Feature plugin referencing the src, doc, tools and info lwjgl plugin. 
+  It contains two feature.xml definitions, one used for playing around in
+  Eclipse, and a template which is used by the build script. If you ever change
+  something here, pay attention to also change the template file.  
+  
+org.lwjgl.updatesite
+  Well, this is the updatesite. As in the feature project, site.xml comes 
+  together with a template version used by the build script.
+  
+org.lwjgl.build -- THIS Plugin
+  This is the build script project. Although it is an Eclipse project, you can
+  simply run the build script with ant from command line. See later on.
+
+Everything is created in LWJGL/eclipse-update/org.lwjgl.build/build. 
+
+Some additional remarks:
+- The version number is automatically "normalized" to Eclipse standards, 
+  that is 2.6 will become 2.6.0 with the current date and time added.
+- The lwjgl-debug.jar is not added to the org.lwjgl plugin, as I do not know
+  how to select one or the other. But I have not further investigated in 
+  that direction.
+- Note that only the created plugin and feature jars are signed, and not the
+  nested lwjgl.jar etc., as I figure that you will sign these jars yourself
+  when creating the zip files.
+- When testing the update site and the installation of plugins, pay attention
+  to the Eclipse P2 system, which caches a lot of things. Simply uninstalling
+  a plugin does not remove the plugins from the Eclipse installation. When
+  the very same version is re-installed, instead of loading new files from the
+  update site these pre-installed versions are reused! Since the date and time
+  is added to the plugin version number, this should cause no problems.  
+- default values for keystore, alias and passphrase are the same as in 
+  lwjgl-applet  
