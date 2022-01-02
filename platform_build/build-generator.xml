@@ -23,7 +23,7 @@
         <mkdir dir="${lwjgl.src.native}/generated/opengles"/>
         <mkdir dir="${lwjgl.src.native}/generated/opencl"/>
 
-		<javac debug="yes" srcdir="${lwjgl.src}/java/" destdir="${lwjgl.bin}" source="1.6" target="1.6" includes="org/lwjgl/util/generator/**.java" taskname="generator">
+		<javac debug="yes" srcdir="${lwjgl.src}/java/" destdir="${lwjgl.bin}" source="1.8" target="1.8" includes="org/lwjgl/util/generator/**.java" taskname="generator">
             <include name="org/lwjgl/util/generator/openal/**.java"/>
             <include name="org/lwjgl/util/generator/opengl/**.java"/>
 			<include name="org/lwjgl/util/generator/opengles/**.java"/>
@@ -32,7 +32,7 @@
 		</javac>
 
 		<!-- Compile helper classes used by the templates -->
-        <javac debug="yes" srcdir="${lwjgl.src}/java/" destdir="${lwjgl.bin}" source="1.5" target="1.5" taskname="generator">
+        <javac debug="yes" srcdir="${lwjgl.src}/java/" destdir="${lwjgl.bin}" source="1.8" target="1.8" taskname="generator">
             <include name="org/lwjgl/PointerWrapper.java"/>
             <include name="org/lwjgl/PointerBuffer.java"/>
             <!-- OpenGL -->
@@ -68,7 +68,7 @@
 
 	<!-- Generate OpenAL -->
 	<target name="generate-openal" depends="generators" description="Generates java and native source for AL">            
-        <javac destdir="${lwjgl.bin}" source="1.6" target="1.6" srcdir="${lwjgl.src.templates.al}" fork="true" taskname="processor">
+        <javac destdir="${lwjgl.bin}" source="1.8" target="1.8" srcdir="${lwjgl.src.templates.al}" fork="true" taskname="processor">
             <compilerarg value="-proc:only"/>
             <compilerarg value="-processor"/>
             <compilerarg value="org.lwjgl.util.generator.GeneratorProcessor"/>
@@ -90,7 +90,7 @@
 
 	<!-- Generate OpenAL [DEBUG] -->
 	<target name="generate-openal-debug" depends="generators" description="Generates java and native source for AL">
-        <javac destdir="${lwjgl.bin}" source="1.6" target="1.6" srcdir="${lwjgl.src.templates.al}" fork="true" taskname="processor">
+        <javac destdir="${lwjgl.bin}" source="1.8" target="1.8" srcdir="${lwjgl.src.templates.al}" fork="true" taskname="processor">
             <compilerarg value="-proc:only"/>
             <compilerarg value="-processor"/>
             <compilerarg value="org.lwjgl.util.generator.GeneratorProcessor"/>
@@ -119,7 +119,7 @@
 
 	<!-- Generate OpenGL -->
 	<target name="generate-opengl" depends="generators" description="Generates java and native source for GL">
-        <javac destdir="${lwjgl.bin}" source="1.6" target="1.6" srcdir="${lwjgl.src.templates.gl}" fork="true" taskname="processorGL">
+        <javac destdir="${lwjgl.bin}" source="1.8" target="1.8" srcdir="${lwjgl.src.templates.gl}" fork="true" taskname="processorGL">
             <compilerarg value="-proc:only"/>
             <compilerarg value="-processor"/>
             <compilerarg value="org.lwjgl.util.generator.GeneratorProcessor"/>
@@ -142,7 +142,7 @@
 
 	<!-- Generate OpenGL [DEBUG] -->
 	<target name="generate-opengl-debug" depends="generators" description="Generates debug java and native source for GL">
-        <javac destdir="${lwjgl.bin}" source="1.6" target="1.6" srcdir="${lwjgl.src.templates.gl}" fork="true" taskname="processor">
+        <javac destdir="${lwjgl.bin}" source="1.8" target="1.8" srcdir="${lwjgl.src.templates.gl}" fork="true" taskname="processor">
             <compilerarg value="-proc:only"/>
             <compilerarg value="-processor"/>
             <compilerarg value="org.lwjgl.util.generator.GeneratorProcessor"/>
@@ -166,7 +166,7 @@
 
 	<!-- Generate OpenGL references -->
 	<target name="generate-opengl-references" depends="generators" description="Generates java and native source for GL">
-        <javac destdir="${lwjgl.bin}" source="1.6" target="1.6" srcdir="${lwjgl.src.templates.gl}" fork="true" taskname="processor">
+        <javac destdir="${lwjgl.bin}" source="1.8" target="1.8" srcdir="${lwjgl.src.templates.gl}" fork="true" taskname="processor">
             <compilerarg value="-proc:only"/>
             <compilerarg value="-processor"/>
             <compilerarg value="org.lwjgl.util.generator.opengl.GLReferencesGeneratorProcessor"/>
@@ -184,7 +184,7 @@
 
 	<!-- Generate OpenGL context capabilities -->
 	<target name="generate-opengl-capabilities" depends="generators" description="Generates java and native source for GL">
-        <javac destdir="${lwjgl.bin}" source="1.6" target="1.6" srcdir="${lwjgl.src.templates.gl}" fork="true" taskname="processor">
+        <javac destdir="${lwjgl.bin}" source="1.8" target="1.8" srcdir="${lwjgl.src.templates.gl}" fork="true" taskname="processor">
             <compilerarg value="-proc:only"/>
             <compilerarg value="-processor"/>
             <compilerarg value="org.lwjgl.util.generator.opengl.GLGeneratorProcessor"/>
@@ -203,7 +203,7 @@
 
 	<!-- Generate OpenGL context capabilities [DEBUG] -->
 	<target name="generate-opengl-capabilities-debug" depends="generators" description="Generates debug java and native source for GL">
-        <javac destdir="${lwjgl.bin}" source="1.6" target="1.6" srcdir="${lwjgl.src.templates.gl}" fork="true" taskname="processor">
+        <javac destdir="${lwjgl.bin}" source="1.8" target="1.8" srcdir="${lwjgl.src.templates.gl}" fork="true" taskname="processor">
             <compilerarg value="-proc:only"/>
             <compilerarg value="-processor"/>
             <compilerarg value="org.lwjgl.util.generator.opengl.GLGeneratorProcessor"/>
@@ -229,7 +229,7 @@
 
 	<!-- Generate OpenGL ES -->
 	<target name="generate-opengles" depends="generators" description="Generates java and native source for GL ES">
-        <javac destdir="${lwjgl.bin}" source="1.6" target="1.6" srcdir="${lwjgl.src.templates.gles}" fork="true" taskname="processor">
+        <javac destdir="${lwjgl.bin}" source="1.8" target="1.8" srcdir="${lwjgl.src.templates.gles}" fork="true" taskname="processor">
             <compilerarg value="-proc:only"/>
             <compilerarg value="-processor"/>
             <compilerarg value="org.lwjgl.util.generator.GeneratorProcessor"/>
@@ -252,7 +252,7 @@
 
 	<!-- Generate OpenGL ES [DEBUG] -->
 	<target name="generate-opengles-debug" depends="generators" description="Generates debug java and native source for GL ES">
-        <javac destdir="${lwjgl.bin}" source="1.6" target="1.6" srcdir="${lwjgl.src.templates.gles}" fork="true" taskname="processor">
+        <javac destdir="${lwjgl.bin}" source="1.8" target="1.8" srcdir="${lwjgl.src.templates.gles}" fork="true" taskname="processor">
             <compilerarg value="-proc:only"/>
             <compilerarg value="-processor"/>
             <compilerarg value="org.lwjgl.util.generator.GeneratorProcessor"/>
@@ -276,7 +276,7 @@
 
 	<!-- Generate OpenGL ES context capabilities -->
 	<target name="generate-opengles-capabilities" depends="generators" description="Generates java and native source for GL ES">
-        <javac destdir="${lwjgl.bin}" source="1.6" target="1.6" srcdir="${lwjgl.src.templates.gles}" fork="true" taskname="processor">
+        <javac destdir="${lwjgl.bin}" source="1.8" target="1.8" srcdir="${lwjgl.src.templates.gles}" fork="true" taskname="processor">
             <compilerarg value="-proc:only"/>
             <compilerarg value="-processor"/>
             <compilerarg value="org.lwjgl.util.generator.opengl.GLESGeneratorProcessor"/>
@@ -295,7 +295,7 @@
 
 	<!-- Generate OpenGL ES context capabilities [DEBUG] -->
 	<target name="generate-opengles-capabilities-debug" depends="generators" description="Generates debug java and native source for GL ES">
-        <javac destdir="${lwjgl.bin}" source="1.6" target="1.6" srcdir="${lwjgl.src.templates.gles}" fork="true" taskname="processor">
+        <javac destdir="${lwjgl.bin}" source="1.8" target="1.8" srcdir="${lwjgl.src.templates.gles}" fork="true" taskname="processor">
             <compilerarg value="-proc:only"/>
             <compilerarg value="-processor"/>
             <compilerarg value="org.lwjgl.util.generator.opengl.GLESGeneratorProcessor"/>
@@ -321,7 +321,7 @@
 
 	<!-- Generate OpenCL -->
     <target name="generate-opencl" depends="generators" description="Generates java and native source for CL">
-        <javac destdir="${lwjgl.bin}" source="1.6" target="1.6" srcdir="${lwjgl.src.templates.cl}" fork="true" taskname="processor">
+        <javac destdir="${lwjgl.bin}" source="1.8" target="1.8" srcdir="${lwjgl.src.templates.cl}" fork="true" taskname="processor">
             <compilerarg value="-proc:only"/>
             <compilerarg value="-processor"/>
             <compilerarg value="org.lwjgl.util.generator.GeneratorProcessor"/>
@@ -344,7 +344,7 @@
 
     <!-- Generate OpenCL [DEBUG] -->
     <target name="generate-opencl-debug" depends="generators" description="Generates debug java and native source for CL">
-        <javac destdir="${lwjgl.bin}" source="1.6" target="1.6" srcdir="${lwjgl.src.templates.cl}" fork="true" taskname="processor">
+        <javac destdir="${lwjgl.bin}" source="1.8" target="1.8" srcdir="${lwjgl.src.templates.cl}" fork="true" taskname="processor">
             <compilerarg value="-proc:only"/>
             <compilerarg value="-processor"/>
             <compilerarg value="org.lwjgl.util.generator.GeneratorProcessor"/>
@@ -368,7 +368,7 @@
 
     <!-- Generate OpenCL capabilities -->
     <target name="generate-opencl-capabilities" depends="generators" description="Generates capabilities for CL">
-        <javac destdir="${lwjgl.bin}" source="1.6" target="1.6" srcdir="${lwjgl.src.templates.cl}" fork="true" taskname="processor">
+        <javac destdir="${lwjgl.bin}" source="1.8" target="1.8" srcdir="${lwjgl.src.templates.cl}" fork="true" taskname="processor">
             <compilerarg value="-proc:only"/>
             <compilerarg value="-processor"/>
             <compilerarg value="org.lwjgl.util.generator.opencl.CLGeneratorProcessor"/>
@@ -387,7 +387,7 @@
 
     <!-- Generate OpenCL capabilities [DEBUG] -->
     <target name="generate-opencl-capabilities-debug" depends="generators" description="Generates debug capabilities for CL">
-        <javac destdir="${lwjgl.bin}" source="1.6" target="1.6" srcdir="${lwjgl.src.templates.cl}" fork="true" taskname="processor">
+        <javac destdir="${lwjgl.bin}" source="1.8" target="1.8" srcdir="${lwjgl.src.templates.cl}" fork="true" taskname="processor">
             <compilerarg value="-proc:only"/>
             <compilerarg value="-processor"/>
             <compilerarg value="org.lwjgl.util.generator.opencl.CLGeneratorProcessor"/>
