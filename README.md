@@ -17,6 +17,18 @@ Compilation
 
 LWJGL requires a JDK and Ant installed to compile, as well as your platforms native compiler to compile the JNI.
 
-* ant generate-all
-* ant compile
-* ant compile_native
+### Building on Mac M1
+
+Install the [Java 8 for arm64](https://www.azul.com/downloads/?version=java-8-lts&os=macos&architecture=arm-64-bit&package=jdk) provided by Zulu.
+
+Find where it was installed, usually in `/Library/Java/JavaVirtualMachines/zulu-8`.
+
+In that folder open `Contents` and then copy the path of the `Home` folder.
+
+Replace `jhome` with the path you just copied.
+
+```
+* JAVA_HOME=jhome ant generate-all
+* JAVA_HOME=jhome ant compile
+* JAVA_HOME=jhome ant compile_native
+```
