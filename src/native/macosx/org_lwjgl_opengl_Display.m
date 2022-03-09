@@ -621,7 +621,11 @@ JNIEXPORT void JNICALL Java_org_lwjgl_opengl_MacOSXDisplay_nSetResizable(JNIEnv 
 	} else {
 		style_mask &= ~NSResizableWindowMask;
 	}
-	[window_info->window setStyleMask:style_mask];
+	
+	dispatch_async(dispatch_get_main_queue(), ^{
+		[window_info->window setStyleMask:style_mask];
+	});	
+	// WOOHOO! Optifine+1.7.10 bugfix here! (error was: "NSWindow drag regions should only be invalidated on the Main Thread!") old code --> [window_info->window setStyleMask:style_mask];
 
 	if (window_info->enableFullscreenModeAPI) {
 		if (resizable) {
