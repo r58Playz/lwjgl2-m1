@@ -321,8 +321,8 @@ public class Project extends Util {
 		in[2] = in[2] * in[3] + 0.5f;
 
 		// Map x,y to viewport
-		win_pos.put(0, in[0] * viewport.get(viewport.position() + 2) + viewport.get(viewport.position()*2 + 0));
-		win_pos.put(1, in[1] * viewport.get(viewport.position() + 3) + viewport.get(viewport.position()*2 + 1));
+		win_pos.put(0, in[0] * viewport.get(viewport.position() + 2) + viewport.get(viewport.position() + 0));
+		win_pos.put(1, in[1] * viewport.get(viewport.position() + 3) + viewport.get(viewport.position() + 1));
 		win_pos.put(2, in[2]);
 
 		return true;

@@ -67,8 +67,8 @@ static NSUInteger lastModifierFlags = 0;
 + (void) createWindow {
 	MacOSXWindowInfo *window_info = peer_info->window_info;
 	
-	int width = window_info->display_rect.size.width*2;
-	int height = window_info->display_rect.size.height*2;
+	int width = window_info->display_rect.size.width;
+	int height = window_info->display_rect.size.height;
 	
 	NSRect view_rect = NSMakeRect(0.0, 0.0, width, height);
 	window_info->view = [[MacOSXOpenGLView alloc] initWithFrame:view_rect pixelFormat:peer_info->pixel_format];

@@ -92,7 +92,7 @@ final class MacOSXDisplay implements DisplayImplementation {
 	
 	private long currentNativeCursor = 0;
 	
-	private boolean enableHighDPI = true;
+	private boolean enableHighDPI = LWJGLUtil.isMacOSXEqualsOrBetterThan(10, 7) && parent == null && (Display.getPrivilegedBoolean("org.lwjgl.opengl.Display.enableHighDPI") || fullscreen);
 	
 	private float scaleFactor = 1.0f;
 
