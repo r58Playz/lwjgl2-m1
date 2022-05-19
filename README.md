@@ -1,4 +1,4 @@
-LWJGL - Lightweight Java Game Library
+LWJGL - Lightweight Java Game Library For M1
 ======
 
 The Lightweight Java Game Library (LWJGL) is a solution aimed directly at professional and amateur Java programmers alike to enable commercial quality games to be written in Java. 
@@ -15,6 +15,4 @@ Compilation
 
 LWJGL requires a JDK and Ant installed to compile, as well as your platforms native compiler to compile the JNI.
 
-* ant generate-all
-* ant compile
-* ant compile_native
+* JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home ant
