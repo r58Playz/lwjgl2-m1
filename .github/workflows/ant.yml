@@ -27,3 +27,8 @@ jobs:
       run: ant compile
     - name: Compile-Native
       run: ant compile_native
+    - name: upload artifacts
+      uses: actions/upload-artifact@v3.1.0
+      with:
+        name: "Libs_folder"
+        path: libs
